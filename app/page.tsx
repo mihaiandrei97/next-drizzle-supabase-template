@@ -1,6 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { getCurrentUser } from "@/lib/session";
+import { createSupabaseActionInstance } from "@/lib/supabase";
+import { revalidatePath } from "next/cache";
+import { cookies } from "next/headers";
 import Link from "next/link";
+
+const signOut = async () => {
+  "use server";
+  const supabase = createSupabaseActionInstance(cookies());
+  await supabase.auth.signOut();
+  revalidatePath("/");
+};
 
 export default async function Home() {
   const user = await getCurrentUser();
@@ -11,6 +21,9 @@ export default async function Home() {
         <div className="text-center">
           <h1>Welcome back, {user.email}</h1>
           <p>You are now signed in!</p>
+          <form action={signOut}>
+            <Button type="submit">Logout</Button>
+          </form>
         </div>
       ) : (
         <div className="text-center">
