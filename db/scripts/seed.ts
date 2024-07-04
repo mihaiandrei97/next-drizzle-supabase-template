@@ -13,21 +13,12 @@ async function resetTable(db: db, table: Table) {
   );
 }
 
-async function seedUsers(db: db) {
-  return db.insert(schema.todos).values([
-    { content: "Buy milk", completed: false },
-    { content: "Buy eggs", completed: true },
-    { content: "Buy bread", completed: false },
-  ]);
-}
 
 async function main() {
-  for (const table of [schema.todos]) {
+  for (const table of [schema.todos, schema.users]) {
     // await db.delete(table); // clear tables without truncating / resetting ids
     await resetTable(db, table);
   }
-
-  await seedUsers(db);
 
   await connection.end();
 }
