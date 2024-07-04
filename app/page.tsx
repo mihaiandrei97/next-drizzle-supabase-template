@@ -18,12 +18,15 @@ export default async function Home() {
     return (
         <main className="flex min-h-screen flex-col items-center p-24">
             {user ? (
-                <div className="text-center">
+                <div className="flex flex-col gap-2 text-center">
                     <h1>Welcome back, {user.email}</h1>
                     <p>You are now signed in!</p>
                     <form action={signOut}>
                         <Button type="submit">Logout</Button>
                     </form>
+                    <Button asChild>
+                        <Link href="/todos">Todos</Link>
+                    </Button>
                 </div>
             ) : (
                 <div className="text-center">

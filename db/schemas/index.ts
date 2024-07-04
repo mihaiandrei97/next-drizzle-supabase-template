@@ -30,3 +30,6 @@ export const todos = pgTable(
         };
     },
 );
+
+export type Todo = typeof todos.$inferSelect;
+export type NewTodo = typeof todos.$inferInsert;
