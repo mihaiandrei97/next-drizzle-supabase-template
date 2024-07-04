@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "db:generate": "drizzle-kit generate",
-    "db:migrate": "cross-env DB_MIGRATING=true npx tsx db/scripts/migrate.ts",
+    "db:migrate": "drizzle-kit migrate",
     "db:seed": "cross-env DB_SEEDING=true npx tsx db/scripts/seed.ts",
     "db:reset": "cross-env DB_SEEDING=true npx tsx db/scripts/reset.ts"
   },

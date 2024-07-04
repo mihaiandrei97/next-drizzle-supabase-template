@@ -9,7 +9,7 @@ if (!env.DB_SEEDING) {
 
 async function resetTable(db: db, table: Table) {
   return db.execute(
-    sql.raw(`DROP TABLE IF EXISTS ${getTableName(table)} CASCADE`),
+    sql.raw(`DROP TABLE IF EXISTS "${getTableName(table)}" CASCADE`),
   );
 }
 
@@ -21,7 +21,7 @@ async function resetDrizzleMigrations(db: db) {
 
 async function main() {
   console.time('resetting tables')
-  for (const table of [schema.todos]) {
+  for (const table of [schema.todos, schema.users]) {
     await resetTable(db, table);
   }
   await resetDrizzleMigrations(db);
