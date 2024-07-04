@@ -6,6 +6,7 @@ import { Todo } from '@/db/schemas';
 import { TrashIcon } from 'lucide-react';
 import { useTransition } from 'react';
 import { deleteTodoAction, toggleTodoAction } from '../actions';
+import { useToast } from '@/components/ui/use-toast';
 
 function TodoCheckbox({ todo }: { todo: Todo }) {
     const [_pending, startTransition] = useTransition();
@@ -24,6 +25,7 @@ function TodoCheckbox({ todo }: { todo: Todo }) {
 }
 export function TodoItem({ todo }: { todo: Todo }) {
     const [pending, startTransition] = useTransition();
+    const { toast } = useToast();
 
     return (
         <div
@@ -45,7 +47,12 @@ export function TodoItem({ todo }: { todo: Todo }) {
                 isLoading={pending}
                 onClick={() => {
                     startTransition(() => {
-                        deleteTodoAction({ todoId: todo.id });
+                        deleteTodoAction({ todoId: todo.id }).then(() => {
+                            toast({
+                                title: 'Todo deleted',
+                                description: 'Your todo has been deleted',
+                            });
+                        });
                     });
                 }}
                 variant="destructive"
