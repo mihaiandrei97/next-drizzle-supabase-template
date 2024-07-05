@@ -1,7 +1,7 @@
 import { getCurrentUser } from '@/lib/session';
 import { getTodosByUserId } from '@/features/todo/service/get-todos-by-user-id';
-import { CreateTodoButton } from '@/features/todo/components/CreateTodo';
-import { TodoItem } from '@/features/todo/components/Todo';
+import { CreateTodoButton } from '@/features/todo/components/create-todo';
+import { TodoItem } from '@/features/todo/components/todo-item';
 
 export default async function TodosPage() {
     const user = await getCurrentUser();
