@@ -6,12 +6,13 @@ type CreateStripeCheckoutProps = {
     priceData: Stripe.Checkout.SessionCreateParams.LineItem.PriceData;
     successUrl: string;
     cancelUrl: string;
+    subscriptionMode: Stripe.Checkout.SessionCreateParams.Mode;
     email?: string;
 };
 
 export async function createStripeCheckout(props: CreateStripeCheckoutProps) {
     const stripeSession = await stripe.checkout.sessions.create({
-        mode: 'subscription',
+        mode: props.subscriptionMode,
         payment_method_types: ['card'],
         customer_email: props.email,
         line_items: [

@@ -40,6 +40,7 @@ export async function buySubscriptionAction({ plan }: { plan: Plan }) {
         successUrl,
         cancelUrl,
         email: user.email,
+        subscriptionMode: 'subscription',
     });
 
     if (!checkoutSession.data) {
