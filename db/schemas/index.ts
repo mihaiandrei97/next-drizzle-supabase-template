@@ -1,4 +1,4 @@
-import { serial, text, pgTable, boolean, timestamp, varchar, index } from 'drizzle-orm/pg-core';
+import { serial, text, pgTable, boolean, timestamp, index } from 'drizzle-orm/pg-core';
 
 const updateAndCreatedAt = {
     createdAt: timestamp('created_at', { mode: 'string' }).notNull().defaultNow(),
