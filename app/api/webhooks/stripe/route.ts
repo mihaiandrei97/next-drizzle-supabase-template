@@ -46,6 +46,11 @@ export async function POST(req: Request) {
     if (event.type === 'invoice.payment_succeeded') {
         const subscription = await stripe.subscriptions.retrieve(session.subscription as string);
 
+        // If the invoice.payment_succeeded webhook event is triggered by creating a new subscription, the value of billing_reason will be "subscription_create".
+        // if (event.data.object.billing_reason === 'subscription_create') {
+        //     return new NextResponse(null, { status: 200 });
+        // }
+
         await updateSubscription({
             stripeCurrentPeriodEnd: new Date(subscription.current_period_end * 1000),
             subscriptionId: subscription.id,

@@ -13,6 +13,7 @@
         "db:migrate": "drizzle-kit migrate",
         "db:seed": "cross-env DB_SEEDING=true npx tsx db/scripts/seed.ts",
         "db:reset": "cross-env DB_SEEDING=true npx tsx db/scripts/reset.ts",
+        "stripe:listen": "stripe listen --forward-to http://localhost:3000/api/webhooks/stripe",
         "prepare": "husky"
     },
     "dependencies": {
