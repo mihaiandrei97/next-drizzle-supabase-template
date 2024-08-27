@@ -6,7 +6,7 @@ import { Todo } from '@/db/schemas';
 import { TrashIcon } from 'lucide-react';
 import { useTransition } from 'react';
 import { useToast } from '@/components/ui/use-toast';
-import { deleteTodoAction, toggleTodoAction } from '@/app/todos/actions';
+import { deleteTodoAction, toggleTodoAction } from '../actions';
 
 function TodoCheckbox({ todo }: { todo: Todo }) {
     const [_pending, startTransition] = useTransition();

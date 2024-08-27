@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { signIn } from './actions';
+import { signIn } from '@/features/auth/actions';
 import { getCurrentUser } from '@/lib/session';
 import { redirect } from 'next/navigation';
 

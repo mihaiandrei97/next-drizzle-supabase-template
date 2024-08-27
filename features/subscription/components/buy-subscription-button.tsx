@@ -1,11 +1,11 @@
 'use client';
 
-import { buySubscriptionAction } from '@/app/pricing/actions';
 import { LoaderButton } from '@/components/LoaderButton';
 import { useToast } from '@/components/ui/use-toast';
 import { Plan } from '@/db/schemas';
 import { useRouter } from 'next/navigation';
 import { useTransition } from 'react';
+import { buySubscriptionAction } from '../actions';
 
 export default function BuySubscriptionButton({ plan }: { plan: Plan }) {
     const [pending, startTransition] = useTransition();

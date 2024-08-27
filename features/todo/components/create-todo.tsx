@@ -8,7 +8,6 @@ import {
     DialogTitle,
     DialogTrigger,
 } from '@/components/ui/dialog';
-import { createTodoAction } from '@/app/todos/actions';
 import { Input } from '@/components/ui/input';
 import { useState, useTransition } from 'react';
 import { z } from 'zod';
@@ -24,6 +23,7 @@ import {
 } from '@/components/ui/form';
 import { LoaderButton } from '@/components/LoaderButton';
 import { useToast } from '@/components/ui/use-toast';
+import { createTodoAction } from '../actions';
 
 const todoSchema = z.object({
     text: z.string().min(1, 'Text is required'),
