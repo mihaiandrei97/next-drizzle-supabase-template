@@ -5,15 +5,8 @@
         {
             "idx": 0,
             "version": "7",
-            "when": 1720083985770,
-            "tag": "0000_stormy_lifeguard",
-            "breakpoints": true
-        },
-        {
-            "idx": 1,
-            "version": "7",
-            "when": 1720191766897,
-            "tag": "0001_amazing_kat_farrell",
+            "when": 1724744775081,
+            "tag": "0000_dear_rogue",
             "breakpoints": true
         }
     ]

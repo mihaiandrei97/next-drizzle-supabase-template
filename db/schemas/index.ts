@@ -1,4 +1,4 @@
-import { serial, text, pgTable, boolean, timestamp, index } from 'drizzle-orm/pg-core';
+import { serial, text, pgTable, boolean, timestamp, index, unique } from 'drizzle-orm/pg-core';
 
 export type Role = 'USER' | 'ADMIN';
 export type Plan = 'BASIC' | 'PREMIUM';
@@ -32,15 +32,24 @@ export const todos = pgTable(
     },
 );
 
-export const userSubscriptions = pgTable('user_subscription', {
-    id: serial('id').primaryKey(),
-    userId: text('user_id').notNull().unique(),
-    stripeCustomerId: text('stripe_customer_id').notNull().unique(),
-    stripeSubscriptionId: text('stripe_subscription_id').notNull().unique(),
-    plan: text('plan').$type<Plan>().notNull(),
-    stripeCurrentPeriodEnd: timestamp('stripe_current_period_end').notNull(),
-    ...updateAndCreatedAt,
-});
+export const userSubscriptions = pgTable(
+    'user_subscription',
+    {
+        id: serial('id').primaryKey(),
+        userId: text('user_id').notNull(),
+        stripeCustomerId: text('stripe_customer_id').notNull(),
+        stripeSubscriptionId: text('stripe_subscription_id').notNull(),
+        plan: text('plan').$type<Plan>().notNull(),
+        stripeCurrentPeriodEnd: timestamp('stripe_current_period_end').notNull(),
+        ...updateAndCreatedAt,
+    },
+    (table) => ({
+        unq: unique('user_id_stripe_subscription_id_unq').on(
+            table.userId,
+            table.stripeSubscriptionId,
+        ),
+    }),
+);
 
 export type Todo = typeof todos.$inferSelect;
 export type NewTodo = typeof todos.$inferInsert;

@@ -25,9 +25,7 @@ export default async function Component() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
-                        <div className="text-4xl font-bold">
-                            ${subscriptions.BASIC.price / 100}/mo
-                        </div>
+                        <div className="text-4xl font-bold">${subscriptions.BASIC.price / 100}</div>
                         <ul className="space-y-2 text-muted-foreground">
                             <li>
                                 <CheckIcon className="mr-2 inline-block h-4 w-4 text-primary" />
@@ -58,7 +56,7 @@ export default async function Component() {
                     </CardHeader>
                     <CardContent className="space-y-4">
                         <div className="text-4xl font-bold">
-                            {subscriptions.PREMIUM.price / 100}/mo
+                            ${subscriptions.PREMIUM.price / 100}
                         </div>
                         <ul className="space-y-2 text-muted-foreground">
                             <li>

@@ -27,6 +27,9 @@ export default async function Home() {
                     <Button asChild>
                         <Link href="/todos">Todos</Link>
                     </Button>
+                    <Button asChild>
+                        <Link href="/pricing">Pricing</Link>
+                    </Button>
                 </div>
             ) : (
                 <div className="text-center">

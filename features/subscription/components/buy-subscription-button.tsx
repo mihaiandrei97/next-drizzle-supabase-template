@@ -5,7 +5,7 @@ import { useToast } from '@/components/ui/use-toast';
 import { Plan } from '@/db/schemas';
 import { useRouter } from 'next/navigation';
 import { useTransition } from 'react';
-import { buySubscriptionAction } from '../actions';
+import { buyPlan } from '../actions';
 
 export default function BuySubscriptionButton({ plan }: { plan: Plan }) {
     const [pending, startTransition] = useTransition();
@@ -14,7 +14,7 @@ export default function BuySubscriptionButton({ plan }: { plan: Plan }) {
 
     function handleClick() {
         startTransition(() => {
-            buySubscriptionAction({ plan })
+            buyPlan({ plan })
                 .then((data) => {
                     router.push(data);
                 })

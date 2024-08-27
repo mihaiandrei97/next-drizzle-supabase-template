@@ -17,7 +17,7 @@ async function resetDrizzleMigrations(db: db) {
 
 async function main() {
     console.time('resetting tables');
-    for (const table of [schema.todos, schema.users]) {
+    for (const table of [schema.userSubscriptions, schema.todos, schema.users]) {
         await resetTable(db, table);
     }
     await resetDrizzleMigrations(db);
